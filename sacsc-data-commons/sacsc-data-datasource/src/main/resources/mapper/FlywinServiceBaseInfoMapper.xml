@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xuelangyun.shangfei.sacsc.datasource.mapper.FlywinServiceBaseInfoMapper">
+    <resultMap id="BaseResultMap" type="com.xuelangyun.shangfei.sacsc.domain.entity.FlywinServiceBaseInfo">
+        <!--
+          WARNING - @mbg.generated
+        -->
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="fly_model" jdbcType="VARCHAR" property="flyModel"/>
+        <result column="delivered_plane_amount" jdbcType="INTEGER" property="deliveredPlaneAmount"/>
+        <result column="first_service_date" jdbcType="DATE" property="firstServiceDate"/>
+        <result column="service_hours" jdbcType="DOUBLE" property="serviceHours"/>
+        <result column="passenger" jdbcType="INTEGER" property="passenger"/>
+        <result column="commercial_load_max" jdbcType="DOUBLE" property="commercialLoadMax"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+    </resultMap>
+</mapper>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xuelangyun.shangfei.sacsc.datasource.mapper.CsRunXProblemMapper">
+    <resultMap id="BaseResultMap" type="com.xuelangyun.shangfei.sacsc.domain.entity.CsRunXProblem">
+        <!--
+          WARNING - @mbg.generated
+        -->
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="stat_date" jdbcType="VARCHAR" property="statDate"/>
+        <result column="total_amount" jdbcType="INTEGER" property="totalAmount"/>
+        <result column="four_amount" jdbcType="INTEGER" property="fourAmount"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+    </resultMap>
+</mapper>

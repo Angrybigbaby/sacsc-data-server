@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xuelangyun.shangfei.sacsc.datasource.mapper.FlightWeatherNoticeMapper">
+    <resultMap id="BaseResultMap" type="com.xuelangyun.shangfei.sacsc.domain.entity.FlightWeatherNotice">
+        <!--
+          WARNING - @mbg.generated
+        -->
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="flight_id" jdbcType="VARCHAR" property="flightId"/>
+        <result column="flight_number" jdbcType="VARCHAR" property="flightNumber"/>
+        <result column="airport_code" jdbcType="VARCHAR" property="airportCode"/>
+        <result column="flight_time" jdbcType="TIMESTAMP" property="flightTime"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="weather_info" jdbcType="LONGVARCHAR" property="weatherInfo"/>
+        <result column="flight_notice" jdbcType="LONGVARCHAR" property="flightNotice"/>
+    </resultMap>
+</mapper>

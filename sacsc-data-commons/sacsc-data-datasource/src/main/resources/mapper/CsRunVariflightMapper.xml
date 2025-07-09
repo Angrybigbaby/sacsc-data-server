@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xuelangyun.shangfei.sacsc.datasource.mapper.CsRunVariflightMapper">
+    <resultMap id="BaseResultMap" type="com.xuelangyun.shangfei.sacsc.domain.entity.CsRunVariflight">
+        <!--
+          WARNING - @mbg.generated
+        -->
+        <id column="id" jdbcType="VARCHAR" property="id"/>
+        <result column="actual_arrtime" jdbcType="BIGINT" property="actualArrtime"/>
+        <result column="actual_deptime" jdbcType="BIGINT" property="actualDeptime"/>
+        <result column="aircraft_number" jdbcType="VARCHAR" property="aircraftNumber"/>
+        <result column="flight_status" jdbcType="INTEGER" property="flightStatusCode"/>
+        <result column="dst_tinezone" jdbcType="INTEGER" property="dstTinezone"/>
+        <result column="estimated_arrtime" jdbcType="BIGINT" property="estimatedArrtime"/>
+        <result column="fdst" jdbcType="VARCHAR" property="fdst"/>
+        <result column="fdst_aptc_name" jdbcType="VARCHAR" property="fdstAptCname"/>
+        <result column="fnum3" jdbcType="VARCHAR" property="fnum3"/>
+        <result column="fnum" jdbcType="VARCHAR" property="fnum"/>
+        <result column="forg" jdbcType="VARCHAR" property="forg"/>
+        <result column="forg_aptc_name" jdbcType="VARCHAR" property="forgAptCname"/>
+        <result column="org_tinezone" jdbcType="INTEGER" property="orgTinezone"/>
+        <result column="scheduled_deptime" jdbcType="BIGINT" property="scheduledDeptime"/>
+        <result column="scheduled_arrtime" jdbcType="BIGINT" property="scheduledArrtime"/>
+        <result column="atype_name" jdbcType="VARCHAR" property="atypeName"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+    </resultMap>
+
+    <resultMap extends="BaseResultMap" id="VariflightSchedule"
+               type="com.xuelangyun.shangfei.sacsc.domain.entity.CsRunVariflight">
+        <result column="air_company" jdbcType="VARCHAR" property="airCompany"/>
+    </resultMap>
+
+    <select id="selectVariAndSchedule" resultMap="VariflightSchedule">
+        select a.air_company,b.aircraft_number,b.flight_status,b.forg_aptc_name,
+        b.fdst_aptc_name,b.scheduled_deptime,b.scheduled_arrtime,b.actual_deptime,
+        b.fnum,b.dst_tinezone,b.org_tinezone,
+        b.actual_arrtime,b.id,b.estimated_arrtime
+        from
+        (select * from cs_run_air_schedule where create_time = (select max(create_time) from cs_run_air_schedule)) a
+        inner join
+        (select * from cs_run_variflight where create_time = (select max(create_time) from cs_run_variflight))b
+        on a.airline_no = b.fnum
+        <if test="airCompany != null and airCompany !=''">
+            and a.air_company = #{airCompany}
+        </if>
+        order by b.scheduled_deptime asc
+
+    </select>
+
+    <select id="selectVariAndScheduelByAirCompanyAndDate" resultMap="VariflightSchedule">
+        select a.air_company,b.aircraft_number,b.flight_status,b.forg_aptc_name,
+        b.fdst_aptc_name,b.scheduled_deptime,b.scheduled_arrtime,b.actual_deptime,
+        b.fnum,b.dst_tinezone,b.org_tinezone,
+        b.actual_arrtime,b.id,b.estimated_arrtime,b.create_time,c.file_url as airCompanyLogo
+        from
+        (select * from cs_run_air_schedule where create_time = #{scheduleDate}) a
+        inner join
+        (select * from cs_run_variflight where create_time = #{variflightDate}) b
+        on a.airline_no = b.fnum
+        <if test="airCompany != null and airCompany !=''">
+            and a.air_company = #{airCompany}
+        </if>
+        inner join (
+            select src_desc, file_url from cs_file_type_src where is_valid = 1 and type_id =
+            (select id from cs_file_type where is_valid = 1 and type_desc = '航司LOGO' limit 0,1)
+        ) c
+        on a.air_company = c.src_desc
+        order by b.scheduled_deptime
+    </select>
+</mapper>

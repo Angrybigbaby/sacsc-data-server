@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xuelangyun.shangfei.sacsc.datasource.mapper.CsRunFlightBasicInfoMapper">
+    <resultMap id="BaseResultMap" type="com.xuelangyun.shangfei.sacsc.domain.entity.CsRunFlightBasicInfo">
+        <!--
+          WARNING - @mbg.generated
+        -->
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="altitude" jdbcType="VARCHAR" property="altitude"/>
+        <result column="llat" jdbcType="VARCHAR" property="llat"/>
+        <result column="tlng" jdbcType="VARCHAR" property="tlng"/>
+        <result column="offtime" jdbcType="TIMESTAMP" property="offtime"/>
+        <result column="llng" jdbcType="VARCHAR" property="llng"/>
+        <result column="ontimeTemp" jdbcType="DOUBLE" property="ontimetemp"/>
+        <result column="outTime" jdbcType="TIMESTAMP" property="out"/>
+        <result column="fleetname" jdbcType="VARCHAR" property="fleetname"/>
+        <result column="eta" jdbcType="TIMESTAMP" property="eta"/>
+        <result column="tailnumber" jdbcType="VARCHAR" property="tailnumber"/>
+        <result column="posfob" jdbcType="VARCHAR" property="posfob"/>
+        <result column="firstflyTime" jdbcType="TIMESTAMP" property="firstflytime"/>
+        <result column="sysTime" jdbcType="TIMESTAMP" property="systime"/>
+        <result column="company" jdbcType="VARCHAR" property="company"/>
+        <result column="model" jdbcType="VARCHAR" property="model"/>
+        <result column="tlat" jdbcType="VARCHAR" property="tlat"/>
+        <result column="lat" jdbcType="VARCHAR" property="lat"/>
+        <result column="stat" jdbcType="INTEGER" property="stat"/>
+        <result column="lng" jdbcType="VARCHAR" property="lng"/>
+        <result column="leginfos" jdbcType="VARCHAR" property="leginfos"/>
+        <result column="minstep" jdbcType="INTEGER" property="minstep"/>
+        <result column="inn" jdbcType="TIMESTAMP" property="inn"/>
+        <result column="flightid" jdbcType="BIGINT" property="flightid"/>
+        <result column="tfourcode" jdbcType="VARCHAR" property="tfourcode"/>
+        <result column="off" jdbcType="TIMESTAMP" property="off"/>
+        <result column="offtimeTemp" jdbcType="DOUBLE" property="offtimetemp"/>
+        <result column="onn" jdbcType="TIMESTAMP" property="onn"/>
+        <result column="flightnum" jdbcType="VARCHAR" property="flightnum"/>
+        <result column="lfourcode" jdbcType="VARCHAR" property="lfourcode"/>
+        <result column="progress" jdbcType="DOUBLE" property="progress"/>
+        <result column="tairport" jdbcType="VARCHAR" property="tairport"/>
+        <result column="lairport" jdbcType="VARCHAR" property="lairport"/>
+        <result column="age" jdbcType="DOUBLE" property="age"/>
+        <result column="status" jdbcType="VARCHAR" property="status"/>
+        <result column="legdate" jdbcType="TIMESTAMP" property="legdate"/>
+        <result column="msn" jdbcType="VARCHAR" property="msn"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+    </resultMap>
+</mapper>

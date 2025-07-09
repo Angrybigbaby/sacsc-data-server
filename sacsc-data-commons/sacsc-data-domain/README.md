@@ -1,0 +1,3 @@
+通用数据bean
+entity对应的241的mysql8
+entity2对应的是242的mysql5

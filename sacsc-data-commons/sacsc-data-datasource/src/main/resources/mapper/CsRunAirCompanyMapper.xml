@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xuelangyun.shangfei.sacsc.datasource.mapper.CsRunAirCompanyMapper">
+    <resultMap id="BaseResultMap" type="com.xuelangyun.shangfei.sacsc.domain.entity.CsRunAirCompany">
+        <!--
+          WARNING - @mbg.generated
+        -->
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="air_company" jdbcType="VARCHAR" property="airCompany"/>
+        <result column="plane_number" jdbcType="INTEGER" property="planeNumber"/>
+        <result column="line_number" jdbcType="INTEGER" property="lineNumber"/>
+        <result column="city_number" jdbcType="INTEGER" property="cityNumber"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+    </resultMap>
+</mapper>

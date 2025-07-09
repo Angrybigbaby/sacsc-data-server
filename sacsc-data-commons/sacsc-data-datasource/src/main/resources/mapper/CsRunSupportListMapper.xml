@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xuelangyun.shangfei.sacsc.datasource.mapper.CsRunSupportListMapper">
+    <resultMap id="BaseResultMap" type="com.xuelangyun.shangfei.sacsc.domain.entity.CsRunSupportList">
+        <!--
+          WARNING - @mbg.generated
+        -->
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="sl_code" jdbcType="VARCHAR" property="slCode"/>
+        <result column="sl_itle" jdbcType="VARCHAR" property="slItle"/>
+        <result column="cr_time" jdbcType="TIMESTAMP" property="crTime"/>
+        <result column="reply_time" jdbcType="TIMESTAMP" property="replyTime"/>
+        <result column="sl_status" jdbcType="VARCHAR" property="slStatus"/>
+        <result column="receive_station" jdbcType="VARCHAR" property="receiveStation"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+    </resultMap>
+</mapper>

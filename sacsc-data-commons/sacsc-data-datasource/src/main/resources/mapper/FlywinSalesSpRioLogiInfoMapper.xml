@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xuelangyun.shangfei.sacsc.datasource.mapper.FlywinSalesSpRioLogiInfoMapper">
+    <resultMap id="BaseResultMap" type="com.xuelangyun.shangfei.sacsc.domain.entity.FlywinSalesSpRioLogiInfo">
+        <!--
+          WARNING - @mbg.generated
+        -->
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="logi_id" jdbcType="BIGINT" property="logiId"/>
+        <result column="order_num" jdbcType="VARCHAR" property="orderNum"/>
+        <result column="exp_number" jdbcType="VARCHAR" property="expNumber"/>
+        <result column="logi_info" jdbcType="VARCHAR" property="logiInfo"/>
+        <result column="logi_time" jdbcType="TIMESTAMP" property="logiTime"/>
+        <result column="logi_remark" jdbcType="VARCHAR" property="logiRemark"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+    </resultMap>
+</mapper>

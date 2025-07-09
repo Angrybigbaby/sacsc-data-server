@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xuelangyun.shangfei.sacsc.datasource.mapper.CsPmAirInfoMapper">
+    <resultMap id="BaseResultMap" type="com.xuelangyun.shangfei.sacsc.domain.entity.CsPmAirInfo">
+        <!--
+          WARNING - @mbg.generated
+        -->
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="tailnumber" jdbcType="VARCHAR" property="tailnumber"/>
+        <result column="flightid" jdbcType="VARCHAR" property="flightid"/>
+        <result column="operator" jdbcType="VARCHAR" property="operator"/>
+        <result column="flighttime" jdbcType="TIMESTAMP" property="flighttime"/>
+        <result column="airport_dep" jdbcType="VARCHAR" property="airportDep"/>
+        <result column="airport_arr" jdbcType="VARCHAR" property="airportArr"/>
+        <result column="p6_mean_sat" jdbcType="DOUBLE" property="p6MeanSat"/>
+        <result column="p6_mean_wind" jdbcType="DOUBLE" property="p6MeanWind"/>
+        <result column="weight_tko" jdbcType="DOUBLE" property="weightTko"/>
+        <result column="fuel_rate_per100km" jdbcType="DOUBLE" property="fuelRatePer100km"/>
+        <result column="landing_fuel" jdbcType="DOUBLE" property="landingFuel"/>
+        <result column="p3t9_fuel_rate_trend" jdbcType="DOUBLE" property="p3t9FuelRateTrend"/>
+        <result column="rate" jdbcType="DOUBLE" property="rate"/>
+        <result column="fly_model" jdbcType="VARCHAR" property="flyModel"/>
+        <result column="engine_model" jdbcType="VARCHAR" property="engineModel"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+    </resultMap>
+
+
+    <resultMap id="PmFlightTime"
+               type="com.xuelangyun.shangfei.sacsc.domain.vo.PmAirPortVo">
+        <result column="start_time" jdbcType="TIMESTAMP" property="startTime"/>
+        <result column="end_time" jdbcType="TIMESTAMP" property="endTime"/>
+    </resultMap>
+
+
+    <select id="getPmFlightTime" resultMap="PmFlightTime">
+        select max(flighttime) end_time,min(flighttime) start_time from cs_pm_air_info
+        where create_time = (select max(create_time) from cs_pm_air_info)
+        and operator = #{airCompany}
+        and tailnumber = #{tailNumber}
+        <if test="airportDep != null and airportDep !=''">
+            and airport_dep = #{airportDep}
+        </if>
+        <if test="airportArr != null and airportArr !=''">
+            and airport_arr = #{airportArr}
+        </if>
+
+    </select>
+    <select id="selectFlightIds" resultType="java.lang.String">
+        select distinct flightid from cs_pm_air_info
+        where create_time = (select max(create_time) from cs_pm_air_info)
+        and operator = #{airCompany}
+        and tailnumber = #{tailNumber}
+        <if test="airportDep != null and airportDep !=''">
+            and airport_dep = #{airportDep}
+        </if>
+        <if test="airportArr != null and airportArr !=''">
+            and airport_arr = #{airportArr}
+        </if>
+        <if test="startTime != null">
+            and flighttime &gt;=#{startTime}
+        </if>
+        <if test="endTime != null">
+            and flighttime &lt;= #{endTime}
+        </if>
+
+    </select>
+</mapper>

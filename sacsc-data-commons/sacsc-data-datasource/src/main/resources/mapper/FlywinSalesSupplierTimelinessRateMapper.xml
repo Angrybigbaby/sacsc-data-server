@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xuelangyun.shangfei.sacsc.datasource.mapper.FlywinSalesSupplierTimelinessRateMapper">
+    <resultMap id="BaseResultMap" type="com.xuelangyun.shangfei.sacsc.domain.entity.FlywinSalesSupplierTimelinessRate">
+        <!--
+          WARNING - @mbg.generated
+        -->
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="stat_date" jdbcType="VARCHAR" property="statDate"/>
+        <result column="more_a_rate" jdbcType="DOUBLE" property="moreARate"/>
+        <result column="a_rate" jdbcType="DOUBLE" property="aRate"/>
+        <result column="more_b_rate" jdbcType="DOUBLE" property="moreBRate"/>
+        <result column="b_rate" jdbcType="DOUBLE" property="bRate"/>
+        <result column="c_rate" jdbcType="DOUBLE" property="cRate"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+    </resultMap>
+</mapper>

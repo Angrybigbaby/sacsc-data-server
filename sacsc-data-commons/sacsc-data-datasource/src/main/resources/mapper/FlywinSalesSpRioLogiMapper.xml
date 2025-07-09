@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xuelangyun.shangfei.sacsc.datasource.mapper.FlywinSalesSpRioLogiMapper">
+    <resultMap id="BaseResultMap" type="com.xuelangyun.shangfei.sacsc.domain.entity.FlywinSalesSpRioLogi">
+        <!--
+          WARNING - @mbg.generated
+        -->
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="order_num" jdbcType="VARCHAR" property="orderNum"/>
+        <result column="exp_number" jdbcType="VARCHAR" property="expNumber"/>
+        <result column="exp_type" jdbcType="VARCHAR" property="expType"/>
+        <result column="exp_name" jdbcType="VARCHAR" property="expName"/>
+        <result column="exp_site" jdbcType="VARCHAR" property="expSite"/>
+        <result column="exp_phone" jdbcType="VARCHAR" property="expPhone"/>
+        <result column="exp_logo" jdbcType="VARCHAR" property="expLogo"/>
+        <result column="delivery_status" jdbcType="INTEGER" property="deliveryStatus"/>
+        <result column="is_sign" jdbcType="INTEGER" property="isSign"/>
+        <result column="courier" jdbcType="VARCHAR" property="courier"/>
+        <result column="courier_phone" jdbcType="VARCHAR" property="courierPhone"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+        <result column="take_time" jdbcType="VARCHAR" property="takeTime"/>
+        <result column="contract_num" jdbcType="VARCHAR" property="contractNum"/>
+        <result column="business_type" jdbcType="VARCHAR" property="businessType"/>
+        <result column="source_num" jdbcType="VARCHAR" property="sourceNum"/>
+        <result column="uap_flag" jdbcType="VARCHAR" property="uapFlag"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+    </resultMap>
+</mapper>

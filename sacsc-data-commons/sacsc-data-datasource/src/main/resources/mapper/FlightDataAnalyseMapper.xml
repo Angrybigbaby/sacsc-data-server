@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xuelangyun.shangfei.sacsc.datasource.mapper.FlightDataAnalyseMapper">
+    <resultMap id="BaseResultMap" type="com.xuelangyun.shangfei.sacsc.domain.entity.FlightDataAnalyse">
+        <!--
+          WARNING - @mbg.generated
+        -->
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="flight_id" jdbcType="VARCHAR" property="flightId"/>
+        <result column="flight_number" jdbcType="VARCHAR" property="flightNumber"/>
+        <result column="mel" jdbcType="VARCHAR" property="mel"/>
+        <result column="cdl" jdbcType="VARCHAR" property="cdl"/>
+        <result column="special_flight" jdbcType="VARCHAR" property="specialFlight"/>
+        <result column="dispatch_notice" jdbcType="VARCHAR" property="dispatchNotice"/>
+        <result column="fault_reservation" jdbcType="VARCHAR" property="faultReservation"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+    </resultMap>
+</mapper>

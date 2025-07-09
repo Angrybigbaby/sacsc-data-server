@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xuelangyun.shangfei.sacsc.datasource.mapper.CsRunFlyingInfoMapper">
+  <resultMap id="BaseResultMap" type="com.xuelangyun.shangfei.sacsc.domain.entity.CsRunFlyingInfo">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="BIGINT" property="id"/>
+    <result column="flightid" jdbcType="BIGINT" property="flightid"/>
+    <result column="altitude" jdbcType="VARCHAR" property="altitude"/>
+    <result column="llng" jdbcType="VARCHAR" property="llng"/>
+    <result column="llat" jdbcType="VARCHAR" property="llat"/>
+    <result column="tlng" jdbcType="VARCHAR" property="tlng"/>
+    <result column="msn" jdbcType="VARCHAR" property="msn"/>
+    <result column="tlat" jdbcType="VARCHAR" property="tlat"/>
+    <result column="offtime" jdbcType="TIMESTAMP" property="offtime"/>
+    <result column="ontimeTemp" jdbcType="VARCHAR" property="ontimetemp"/>
+    <result column="outtime" jdbcType="TIMESTAMP" property="outtime"/>
+    <result column="fleetname" jdbcType="VARCHAR" property="fleetname"/>
+    <result column="eta" jdbcType="TIMESTAMP" property="eta"/>
+    <result column="tailnumber" jdbcType="VARCHAR" property="tailnumber"/>
+    <result column="posfob" jdbcType="VARCHAR" property="posfob"/>
+    <result column="firstflyTime" jdbcType="VARCHAR" property="firstflytime"/>
+    <result column="sysTime" jdbcType="TIMESTAMP" property="systime"/>
+    <result column="company" jdbcType="VARCHAR" property="company"/>
+    <result column="model" jdbcType="VARCHAR" property="model"/>
+    <result column="lng" jdbcType="VARCHAR" property="lng"/>
+    <result column="lat" jdbcType="VARCHAR" property="lat"/>
+    <result column="stat" jdbcType="VARCHAR" property="stat"/>
+    <result column="leginfos" jdbcType="VARCHAR" property="leginfos"/>
+    <result column="minstep" jdbcType="SMALLINT" property="minstep"/>
+    <result column="inn" jdbcType="VARCHAR" property="inn"/>
+    <result column="legdate" jdbcType="TIMESTAMP" property="legdate"/>
+    <result column="faultlevel" jdbcType="VARCHAR" property="faultlevel"/>
+    <result column="tfourcode" jdbcType="VARCHAR" property="tfourcode"/>
+    <result column="off" jdbcType="TIMESTAMP" property="off"/>
+    <result column="offtimeTemp" jdbcType="VARCHAR" property="offtimetemp"/>
+    <result column="onn" jdbcType="VARCHAR" property="onn"/>
+    <result column="flightnum" jdbcType="VARCHAR" property="flightnum"/>
+    <result column="lfourcode" jdbcType="VARCHAR" property="lfourcode"/>
+    <result column="progress" jdbcType="VARCHAR" property="progress"/>
+    <result column="tairport" jdbcType="VARCHAR" property="tairport"/>
+    <result column="lairport" jdbcType="VARCHAR" property="lairport"/>
+    <result column="age" jdbcType="VARCHAR" property="age"/>
+    <result column="status" jdbcType="VARCHAR" property="status"/>
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+  </resultMap>
+
+  <select id="selectLandAfter4" resultMap="BaseResultMap">
+    select
+      b.file_url as airPlaneLogo, c.file_url as airCompanyLogo, d.file_url as airPlaneImage, e.file_url as airPlaneLandLogo,
+      a.*
+    from
+      (
+        select
+          b.*
+        from
+          (
+            select
+              tailnumber, max(create_time) as create_time
+            from
+              cs_run_flying_info
+            where
+              create_time >= #{date}
+              and tailnumber not in (
+                 select tailnumber
+                 from cs_run_flying_info
+                 where create_time = (
+                     select max(create_time)
+                     from cs_run_flying_info
+                     where create_time >= #{date}
+                 )
+              )
+            group by tailnumber
+          ) a
+        inner join cs_run_flying_info b
+        on a.tailnumber = b.tailnumber and a.create_time = b.create_time
+        <if test="company != null and company != ''">
+          and b.company = #{company}
+        </if>
+        <if test="model != null and model != ''">
+          and b.model like #{model}
+        </if>
+      ) a
+    left join (
+      select src_desc, file_url from cs_file_type_src where is_valid = 1 and type_id = (select id from cs_file_type where type_desc = #{airPlaneLogoDesc} limit 1)
+    ) b on a.company = b.src_desc
+    left join (
+      select src_desc, file_url from cs_file_type_src where is_valid = 1 and type_id = (select id from cs_file_type where type_desc = '航司LOGO' limit 1)
+    ) c on a.company = c.src_desc
+    left join (
+      select src_desc, file_url from cs_file_type_src where is_valid = 1 and type_id = (select id from cs_file_type where type_desc = #{airPlaneImageDesc} limit 1)
+    ) d on a.company = d.src_desc
+    left join (
+      select src_desc, file_url from cs_file_type_src where is_valid = 1 and type_id = (select id from cs_file_type where type_desc = #{airPlaneLandLogoDesc} limit 1)
+    ) e on a.company = e.src_desc
+  </select>
+
+  <delete id="deleteHistory">
+    delete from cs_run_flying_info where id not in (
+      select a.id from (
+        select b.id from
+        (
+        select flightnum, max(create_time) as create_time
+        from cs_run_flying_info
+        where create_time &lt; #{end} and create_time &gt; #{begin}
+        group by flightnum
+        ) a
+        inner join cs_run_flying_info b
+        on a.flightnum = b.flightnum and a.create_time = b.create_time) a
+    ) and create_time &lt; #{end} and create_time &gt; #{begin}
+  </delete>
+</mapper>

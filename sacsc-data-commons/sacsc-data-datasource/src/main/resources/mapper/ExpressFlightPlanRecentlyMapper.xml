@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xuelangyun.shangfei.sacsc.datasource.mapper.ExpressFlightPlanRecentlyMapper">
+    <resultMap id="BaseResultMap" type="com.xuelangyun.shangfei.sacsc.domain.entity.ExpressFlightPlanRecently">
+        <!--
+          WARNING - @mbg.generated
+        -->
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="flight_date" jdbcType="DATE" property="flightDate"/>
+        <result column="flight_number" jdbcType="VARCHAR" property="flightNumber"/>
+        <result column="takeoff_airport" jdbcType="VARCHAR" property="takeoffAirport"/>
+        <result column="arrive_airport" jdbcType="VARCHAR" property="arriveAirport"/>
+        <result column="plan_takeoff_time" jdbcType="TIMESTAMP" property="planTakeoffTime"/>
+        <result column="plan_arrive_time" jdbcType="TIMESTAMP" property="planArriveTime"/>
+        <result column="plan_risk" jdbcType="VARCHAR" property="planRisk"/>
+        <result column="tail_number" jdbcType="VARCHAR" property="tailNumber"/>
+        <result column="flying" jdbcType="VARCHAR" property="flying"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+    </resultMap>
+</mapper>

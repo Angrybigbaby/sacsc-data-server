@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xuelangyun.shangfei.sacsc.datasource.mapper.CsRunFlightCasMapper">
+  <resultMap id="BaseResultMap" type="com.xuelangyun.shangfei.sacsc.domain.entity.CsRunFlightCas">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="BIGINT" property="id"/>
+    <result column="flight_id" jdbcType="BIGINT" property="flightId"/>
+    <result column="description" jdbcType="VARCHAR" property="description"/>
+    <result column="fault_id" jdbcType="BIGINT" property="faultId"/>
+    <result column="time" jdbcType="TIMESTAMP" property="time"/>
+    <result column="priority" jdbcType="INTEGER" property="priority"/>
+    <result column="type" jdbcType="VARCHAR" property="type"/>
+    <result column="ata" jdbcType="VARCHAR" property="ata"/>
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+  </resultMap>
+
+  <resultMap id="cas" type="com.xuelangyun.shangfei.sacsc.domain.entity.CsRunFlightCas"
+    extends="BaseResultMap">
+    <result column="flightnum" jdbcType="VARCHAR" property="flightnum"/>
+    <result column="tailnumber" jdbcType="VARCHAR" property="tailnumber"/>
+    <result column="lfourcode" jdbcType="VARCHAR" property="lfourcode"/>
+    <result column="tfourcode" jdbcType="VARCHAR" property="tfourcode"/>
+  </resultMap>
+
+  <select id="selectEachFlightNewestByTime" resultMap="cas">
+    select
+        a.flightnum,
+        a.tailnumber,
+        a.lfourcode,
+        a.tfourcode,
+        b.*
+    from (
+        select b.* from (
+            select flightnum, max(create_time) as create_time
+            from cs_run_flying_info
+            where
+                create_time &lt; #{end}
+                and create_time &gt; #{begin}
+                <if test="companyNames != null and companyNames.size() > 0">
+                  and company in
+                  <foreach collection='companyNames' item='company' index='index' open='(' close=')' separator=','>
+                    #{company}
+                  </foreach>
+                </if>
+            group by flightnum) a
+        inner join cs_run_flying_info b
+        on a.flightnum = b.flightnum and a.create_time = b.create_time) a
+    inner join (
+        select b.* from (
+            select flight_id, max(create_time) as create_time
+            from cs_run_flight_cas
+            where create_time &lt; #{end} and create_time &gt; #{begin} group by flight_id) a
+        inner join cs_run_flight_cas b
+        on a.flight_id = b.flight_id and a.create_time = b.create_time) b
+    on a.flightid = b.flight_id;
+  </select>
+
+  <select id="selectEachTailNumberLand" resultMap="BaseResultMap">
+    select
+      b.flight_id, b.type, b.priority,b.description
+    from
+      (
+        select
+          flight_id, max(create_time) as create_time
+        from
+          cs_run_flight_cas
+        where
+          create_time >= #{date}
+          and flight_id in
+            (
+              select
+                b.flightid
+              from
+                (
+                  select tailnumber, max(create_time) as create_time
+                  from cs_run_flying_info
+                  where
+                    create_time >= #{date}
+                    and tailnumber not in (
+                      select tailnumber
+                      from cs_run_flying_info
+                      where create_time = (
+                        select max(create_time)
+                        from cs_run_flying_info
+                        where create_time >= #{date}
+                      )
+                    )
+                  group by tailnumber
+                ) a
+              inner join cs_run_flying_info b
+              on a.tailnumber = b.tailnumber and a.create_time = b.create_time
+              <if test="company != null and company != ''">
+                and b.company = #{company}
+              </if>
+            )
+          group by flight_id
+      ) a
+    inner join cs_run_flight_cas b
+    on a.flight_id = b.flight_id and a.create_time = b.create_time;
+  </select>
+
+  <delete id="deleteHistory">
+    delete from cs_run_flight_cas where id not in (
+      select a.id from (
+         select b.id from
+         (
+           select flight_id, max(create_time) as create_time
+           from cs_run_flight_cas
+           where create_time &lt; #{end} and create_time &gt; #{begin}
+           group by flight_id
+         ) a
+         inner join cs_run_flight_cas b
+         on a.flight_id = b.flight_id and a.create_time = b.create_time) a
+    ) and create_time &lt; #{end} and create_time &gt; #{begin}
+  </delete>
+</mapper>

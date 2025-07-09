@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xuelangyun.shangfei.sacsc.datasource.mapper.CsRunFlightEdMapper">
+    <resultMap id="BaseResultMap" type="com.xuelangyun.shangfei.sacsc.domain.entity.CsRunFlightEd">
+        <!--
+          WARNING - @mbg.generated
+        -->
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="flightid" jdbcType="BIGINT" property="flightid"/>
+        <result column="tailnumber" jdbcType="VARCHAR" property="tailnumber"/>
+        <result column="msn" jdbcType="VARCHAR" property="msn"/>
+        <result column="n1_speed_selected_l" jdbcType="DOUBLE" property="n1SpeedSelectedL"/>
+        <result column="caltrate" jdbcType="DOUBLE" property="caltrate"/>
+        <result column="n1_speed_redline_r" jdbcType="DOUBLE" property="n1SpeedRedlineR"/>
+        <result column="n1_vib_selected_r" jdbcType="DOUBLE" property="n1VibSelectedR"/>
+        <result column="n1_speed_demand_r" jdbcType="DOUBLE" property="n1SpeedDemandR"/>
+        <result column="cabdifpr" jdbcType="DOUBLE" property="cabdifpr"/>
+        <result column="n1_speed_redline_l" jdbcType="DOUBLE" property="n1SpeedRedlineL"/>
+        <result column="cabinalt" jdbcType="DOUBLE" property="cabinalt"/>
+        <result column="itt_norlmtamb_l" jdbcType="DOUBLE" property="ittNorlmtambL"/>
+        <result column="n2_vib_selected_l" jdbcType="DOUBLE" property="n2VibSelectedL"/>
+        <result column="itt_maxlmt_red_r" jdbcType="DOUBLE" property="ittMaxlmtRedR"/>
+        <result column="itt_maxlmt_red_l" jdbcType="DOUBLE" property="ittMaxlmtRedL"/>
+        <result column="apu_egt" jdbcType="VARCHAR" property="apuEgt"/>
+        <result column="oil_pressure_l" jdbcType="DOUBLE" property="oilPressureL"/>
+        <result column="n2_speed_selected_r" jdbcType="DOUBLE" property="n2SpeedSelectedR"/>
+        <result column="eng_oil_temp_l" jdbcType="DOUBLE" property="engOilTempL"/>
+        <result column="n1_speed_reference_r" jdbcType="DOUBLE" property="n1SpeedReferenceR"/>
+        <result column="n2_speed_redline_r" jdbcType="DOUBLE" property="n2SpeedRedlineR"/>
+        <result column="n1_speed_selected_r" jdbcType="DOUBLE" property="n1SpeedSelectedR"/>
+        <result column="n2_speed_selected_l" jdbcType="DOUBLE" property="n2SpeedSelectedL"/>
+        <result column="itt_selected_l" jdbcType="DOUBLE" property="ittSelectedL"/>
+        <result column="fobkgrw" jdbcType="DOUBLE" property="fobkgrw"/>
+        <result column="oil_pressure_r" jdbcType="DOUBLE" property="oilPressureR"/>
+        <result column="n1_vib_selected_l" jdbcType="DOUBLE" property="n1VibSelectedL"/>
+        <result column="eng_oil_temp_r" jdbcType="DOUBLE" property="engOilTempR"/>
+        <result column="n2_speed_redline_l" jdbcType="DOUBLE" property="n2SpeedRedlineL"/>
+        <result column="fobkglw" jdbcType="DOUBLE" property="fobkglw"/>
+        <result column="apu_speed" jdbcType="DOUBLE" property="apuSpeed"/>
+        <result column="fuel_flow_l" jdbcType="DOUBLE" property="fuelFlowL"/>
+        <result column="n1_speed_demand_l" jdbcType="DOUBLE" property="n1SpeedDemandL"/>
+        <result column="itt_norlmtamb_r" jdbcType="DOUBLE" property="ittNorlmtambR"/>
+        <result column="n2_vib_selected_r" jdbcType="DOUBLE" property="n2VibSelectedR"/>
+        <result column="itt_selected_r" jdbcType="DOUBLE" property="ittSelectedR"/>
+        <result column="fuel_flow_r" jdbcType="DOUBLE" property="fuelFlowR"/>
+        <result column="n1_speed_reference_l" jdbcType="DOUBLE" property="n1SpeedReferenceL"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+    </resultMap>
+</mapper>

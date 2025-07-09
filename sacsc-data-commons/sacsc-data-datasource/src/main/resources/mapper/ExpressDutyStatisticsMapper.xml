@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xuelangyun.shangfei.sacsc.datasource.mapper.ExpressDutyStatisticsMapper">
+    <resultMap id="BaseResultMap" type="com.xuelangyun.shangfei.sacsc.domain.entity.ExpressDutyStatistics">
+        <!--
+          WARNING - @mbg.generated
+        -->
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="model" jdbcType="VARCHAR" property="model"/>
+        <result column="total_flight_time" jdbcType="DOUBLE" property="totalFlightTime"/>
+        <result column="total_rotation_time" jdbcType="DOUBLE" property="totalRotationTime"/>
+        <result column="total_landing" jdbcType="DOUBLE" property="totalLanding"/>
+        <result column="crew_duty_person_time" jdbcType="DOUBLE" property="crewDutyPersonTime"/>
+        <result column="crew_duty_time" jdbcType="DOUBLE" property="crewDutyTime"/>
+        <result column="operation_duty_person_time" jdbcType="DOUBLE" property="operationDutyPersonTime"/>
+        <result column="operation_duty_time" jdbcType="DOUBLE" property="operationDutyTime"/>
+        <result column="mechanical_duty_person_time" jdbcType="DOUBLE" property="mechanicalDutyPersonTime"/>
+        <result column="mechanical_duty_time" jdbcType="DOUBLE" property="mechanicalDutyTime"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+    </resultMap>
+</mapper>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xuelangyun.shangfei.sacsc.datasource.mapper.CsRunSrOverdueMapper">
+    <resultMap id="BaseResultMap" type="com.xuelangyun.shangfei.sacsc.domain.entity.CsRunSrOverdue">
+        <!--
+          WARNING - @mbg.generated
+        -->
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="sr_code" jdbcType="VARCHAR" property="srCode"/>
+        <result column="sr_title" jdbcType="VARCHAR" property="srTitle"/>
+        <result column="cr_time" jdbcType="TIMESTAMP" property="crTime"/>
+        <result column="cus_name" jdbcType="VARCHAR" property="cusName"/>
+        <result column="sr_priority" jdbcType="VARCHAR" property="srPriority"/>
+        <result column="tail_number" jdbcType="VARCHAR" property="tailNumber"/>
+        <result column="reply_time" jdbcType="TIMESTAMP" property="replyTime"/>
+        <result column="sr_status" jdbcType="VARCHAR" property="srStatus"/>
+        <result column="sr_handler" jdbcType="VARCHAR" property="srHandler"/>
+        <result column="overdue_type" jdbcType="SMALLINT" property="overdueType"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+    </resultMap>
+</mapper>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xuelangyun.shangfei.sacsc.datasource.mapper.FlightStatusSummaryMapper">
+    <resultMap id="BaseResultMap" type="com.xuelangyun.shangfei.sacsc.domain.entity.FlightStatusSummary">
+        <!--
+          WARNING - @mbg.generated
+        -->
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="flight_id" jdbcType="VARCHAR" property="flightId"/>
+        <result column="flight_number" jdbcType="VARCHAR" property="flightNumber"/>
+        <result column="flight_status" jdbcType="VARCHAR" property="flightStatus"/>
+        <result column="flight_time" jdbcType="TIMESTAMP" property="flightTime"/>
+        <result column="flight_height" jdbcType="DOUBLE" property="flightHeight"/>
+        <result column="fuel_quantity" jdbcType="DOUBLE" property="fuelQuantity"/>
+        <result column="longitude" jdbcType="VARCHAR" property="longitude"/>
+        <result column="latitude" jdbcType="VARCHAR" property="latitude"/>
+        <result column="flight_speed" jdbcType="DOUBLE" property="flightSpeed"/>
+        <result column="fuel_flow" jdbcType="DOUBLE" property="fuelFlow"/>
+        <result column="hight_deviation" jdbcType="VARCHAR" property="hightDeviation"/>
+        <result column="track_deviation" jdbcType="VARCHAR" property="trackDeviation"/>
+        <result column="oil_deviation" jdbcType="VARCHAR" property="oilDeviation"/>
+        <result column="flight_deviation" jdbcType="VARCHAR" property="flightDeviation"/>
+        <result column="supervisory_url" jdbcType="VARCHAR" property="supervisoryUrl"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+    </resultMap>
+</mapper>

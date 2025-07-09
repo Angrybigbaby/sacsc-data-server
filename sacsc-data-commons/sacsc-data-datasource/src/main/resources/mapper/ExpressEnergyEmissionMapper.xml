@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xuelangyun.shangfei.sacsc.datasource.mapper.ExpressEnergyEmissionMapper">
+    <resultMap id="BaseResultMap" type="com.xuelangyun.shangfei.sacsc.domain.entity.ExpressEnergyEmission">
+        <!--
+          WARNING - @mbg.generated
+        -->
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="model" jdbcType="VARCHAR" property="model"/>
+        <result column="fuel_quantity_plan" jdbcType="DOUBLE" property="fuelQuantityPlan"/>
+        <result column="fuel_quantity_actual" jdbcType="DOUBLE" property="fuelQuantityActual"/>
+        <result column="fuel_quantity_save" jdbcType="DOUBLE" property="fuelQuantitySave"/>
+        <result column="emissions_before" jdbcType="DOUBLE" property="emissionsBefore"/>
+        <result column="emissions_after" jdbcType="DOUBLE" property="emissionsAfter"/>
+        <result column="emissions_save" jdbcType="DOUBLE" property="emissionsSave"/>
+        <result column="noise_before" jdbcType="DOUBLE" property="noiseBefore"/>
+        <result column="noise_after" jdbcType="DOUBLE" property="noiseAfter"/>
+        <result column="noise_save" jdbcType="DOUBLE" property="noiseSave"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+    </resultMap>
+</mapper>

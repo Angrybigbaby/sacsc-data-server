@@ -1,0 +1,3 @@
+config决定扫描哪个包
+mapper对应的241的mysql8
+mapper2对应的是242的mysql5
